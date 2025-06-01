@@ -44,10 +44,7 @@ Tested and deployed on **Moonbase Alpha** (Moonbeam Testnet)
 
 ---
 
-## 🚀 Frontend & Backend Repositories
-
-* 🔗 [Frontend Repository](https://github.com/your-org/tourismsouvenirs-frontend)
-* 🔗 [Backend Repository](https://github.com/your-org/tourismsouvenirs-backend)
+## 🚀 Frontend & Backend
 
 These components provide:
 
@@ -61,10 +58,10 @@ These components provide:
 ## 🧪 How to Use
 
 1. Clone the repo
-   `git clone https://github.com/your-org/tourismsouvenirs-contracts.git`
+   `git clone `
 
 2. Install dependencies
-   `npm install` or `yarn` (if using Hardhat)
+   Compile
 
 3. Deploy to Moonbase Alpha using Remix or Hardhat
 
