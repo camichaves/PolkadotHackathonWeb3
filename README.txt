@@ -1,28 +1,104 @@
-REMIX DEFAULT WORKSPACE
+# 🧾 TourismSouvenirs Smart Contracts
 
-Remix default workspace is present when:
-i. Remix loads for the very first time 
-ii. A new workspace is created with 'Default' template
-iii. There are no files existing in the File Explorer
+This repository contains the smart contracts for **TourismSouvenirs**, a Web3-based tourism gamification platform that rewards real-world exploration with soulbound NFTs and monthly incentives.
 
-This workspace contains 3 directories:
+Tourists visiting key landmarks in San Juan and Mendoza collect **non-transferable NFTs** (ERC-1155), which serve as verifiable proof of visit. At the end of each month, a **reward pool**—funded by governments or sponsors—is automatically distributed to users based on their tourism engagement.
 
-1. 'contracts': Holds three contracts with increasing levels of complexity.
-2. 'scripts': Contains four typescript files to deploy a contract. It is explained below.
-3. 'tests': Contains one Solidity test file for 'Ballot' contract & one JS test file for 'Storage' contract.
+---
 
-SCRIPTS
+## 🛠 Contracts
 
-The 'scripts' folder has four typescript files which help to deploy the 'Storage' contract using 'web3.js' and 'ethers.js' libraries.
+### 🧩 `TourismSouvenirs.sol`
 
-For the deployment of any other contract, just update the contract name from 'Storage' to the desired contract and provide constructor arguments accordingly 
-in the file `deploy_with_ethers.ts` or  `deploy_with_web3.ts`
+* ERC-1155 smart contract with **soulbound NFTs**
+* Each token represents a unique tourist location
+* Visitors can only claim each location once (`hasClaimed`)
+* Supports per-token metadata via `setTokenURI(tokenId, uri)`
 
-In the 'tests' folder there is a script containing Mocha-Chai unit tests for 'Storage' contract.
+### 💰 `TourismRewardPool.sol`
 
-To run a script, right click on file name in the file explorer and click 'Run'. Remember, Solidity file must already be compiled.
-Output from script will appear in remix terminal.
+* ERC-20 reward distribution smart contract
+* Records visit counts via `registerVisit(address user)`
+* Distributes reward tokens proportionally via `distributeRewards()`
+* Includes a whitelist of approved merchants for token redemption
 
-Please note, require/import is supported in a limited manner for Remix supported modules.
-For now, modules supported by Remix are ethers, web3, swarmgw, chai, multihashes, remix and hardhat only for hardhat.ethers object/plugin.
-For unsupported modules, an error like this will be thrown: '<module_name> module require is not supported by Remix IDE' will be shown.
+---
+
+## 🔗 Deployed Network
+
+Tested and deployed on **Moonbase Alpha** (Moonbeam Testnet)
+
+* TourismSouvenirs contract: `0xYourContractAddressHere`
+* TourismRewardPool contract: `0xYourContractAddressHere`
+
+---
+
+## 📁 Folder Structure
+
+```
+.
+├── contracts/
+│   ├── TourismSouvenirs.sol
+│   └── TourismRewardPool.sol
+├── scripts/
+│   └── deploy.js (optional)
+├── test/
+│   └── contract-tests.js (optional)
+├── README.md
+└── ...
+```
+
+---
+
+## 🚀 Frontend & Backend Repositories
+
+* 🔗 [Frontend Repository](https://github.com/your-org/tourismsouvenirs-frontend)
+* 🔗 [Backend Repository](https://github.com/your-org/tourismsouvenirs-backend)
+
+These components provide:
+
+* Web3Auth login (Google/email)
+* NFT claiming via QR scan
+* Monthly reward tracking
+* Token redemption at local merchants
+
+---
+
+## 🧪 How to Use
+
+1. Clone the repo
+   `git clone https://github.com/your-org/tourismsouvenirs-contracts.git`
+
+2. Install dependencies
+   `npm install` or `yarn` (if using Hardhat)
+
+3. Deploy to Moonbase Alpha using Remix or Hardhat
+
+4. Link the deployed contract addresses to the frontend `.env` or config files
+
+---
+
+## 🧱 Tech Stack
+
+* Solidity 0.8.20
+* OpenZeppelin Contracts
+* ERC-1155 (soulbound variant)
+* ERC-20 with merchant whitelisting
+* IPFS for metadata hosting
+* Moonbeam’s Moonbase Alpha for deployment
+
+---
+
+## 📄 License
+
+MIT — open for public, educational, and governmental reuse.
+
+---
+
+## 💡 Project Context
+
+TourismSouvenirs was developed during a Web3 hackathon to explore how blockchain can incentivize real-world behavior and strengthen local economies. It demonstrates how smart contracts can support transparent tourism reward systems, verifiable visit tracking, and token-based local commerce.
+
+The project is designed to be modular and replicable across different regions, providing an open-source infrastructure for tourism-driven economic development.
+
+Feel free to fork, extend, or propose enhancements!
